@@ -1,11 +1,13 @@
 package controller;
 
 
+import org.springframework.stereotype.Component;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
-
+@Component
 @Path("/welcome")
 public class HelloController {
 

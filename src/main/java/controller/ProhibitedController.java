@@ -1,5 +1,7 @@
 package controller;
 
+import org.springframework.stereotype.Component;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
@@ -7,7 +9,7 @@ import javax.ws.rs.core.Response;
 /**
  * Created by robert.szostakowski on 2015-01-23.
  */
-
+@Component
 @Path("/secure/admin/shouldBeProhibited")
 public class ProhibitedController {
 
