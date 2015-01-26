@@ -1,21 +1,22 @@
 package controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-@Controller
-@RequestMapping("/welcome")
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Response;
+
+
+@Path("/welcome")
 public class HelloController {
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String printWelcome(ModelMap model) {
-
+    // it is not working as a controller like SpringMVC
+    // but it is possible to return a jsp page http://blog.docuverse.com/2009/08/04/using-jsp-with-jersey-jax-rs-implementation/
+    @GET
+    public Response printWelcome() {
         System.out.println("Using mapped method");
-        model.addAttribute("message", "Spring 3 MVC Hello World");
-        return "hello";
+        String output = "Jersey say : " + " hello";
 
+        return Response.status(200).entity(output).build();
     }
 
 }

@@ -1,23 +1,23 @@
 package controller;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Response;
+
 /**
  * Created by robert.szostakowski on 2015-01-23.
  */
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-@Controller
-@RequestMapping("/secure/admin/shouldBeProhibited")
+@Path("/secure/admin/shouldBeProhibited")
 public class ProhibitedController {
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String printWelcome(ModelMap model) {
+    @GET
+    public Response printWelcome() {
 
         System.out.println("Using mapped method");
-        model.addAttribute("message", "This website should be only available for chosen people");
-        return "hello";
+        String output = "There is no controller";
+
+        return Response.status(200).entity(output).build();
 
     }
 }
