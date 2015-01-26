@@ -1,4 +1,4 @@
-package controller;
+package rest;
 
 
 import javax.ws.rs.GET;
@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response;
 
 
 @Path("/welcome")
-public class HelloController {
+public class HelloRest {
 
     // it is not working as a controller like SpringMVC
     // but it is possible to return a jsp page http://blog.docuverse.com/2009/08/04/using-jsp-with-jersey-jax-rs-implementation/

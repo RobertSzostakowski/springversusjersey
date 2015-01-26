@@ -1,4 +1,4 @@
-package controller;
+package rest;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -9,7 +9,7 @@ import javax.ws.rs.core.Response;
  */
 
 @Path("/secure/admin/shouldBeProhibited")
-public class ProhibitedController {
+public class ProhibitedRest {
 
     @GET
     public Response printWelcome() {
