@@ -8,7 +8,7 @@ import javax.ws.rs.core.Response;
  * Created by robert.szostakowski on 2015-01-23.
  */
 
-@Path("/secure/admin/shouldBeProhibited")
+@Path("/admin/shouldBeProhibited")
 public class ProhibitedRest {
 
     @GET

@@ -1,16 +1,50 @@
 <html>
+ <!-- based on  http://www.oracle.com/technetwork/articles/java/jersey-jquery-177519.html -->
 <head>
     <title>Sample article</title>
     <script src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+    <script src="star-rating/jquery.rating.js"></script>
     <style type="text/css" media="screen">
-        @import "WEB-INF/pages/style.css";
+        @import "style.css";
+        @import "star-rating/jquery.rating.css";
     </style>
 </head>
 <body>
 <h1>Sample article</h1>
-<p>Article text</p>
+<p>It turns out that the amount of code that you have to produce to solve a simple parallel computation problem is almost the same whichever method you use to organise your code. However, this is clearly not true for larger systems. The amount of effort one has to put into the  configuration and management overhead will play a much larger role as your system complexity grows.</p>
+<form id="vote-form">Rating
+    <input name="star1" type="radio" class="rating" value="1"/>
+    <input name="star1" type="radio" class="rating" value="2"/>
+    <input name="star1" type="radio" class="rating" value="3"/>
+    <input name="star1" type="radio" class="rating" value="4"/>
+    <input name="star1" type="radio" class="rating" value="5"/>
+</form>
+<br/>
 <div id="author-wrapper">
     <div id="author">1</div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var id = $("#author").text(); //This id will be used with the REST back-end.
+        var author = new Author("1", "Robert", "Szost", "http://www.komplett.no");
+        $("#author").replaceWith("Author: <b>" + author.firstName + " " + author.lastName + "</b><br/>" +
+                "website: <a href=\"" + author.url + "\">" + author.url + "</a>");
+
+        $("#author-wrapper").slideDown("slow");
+
+        $(".rating").rating({
+            callback: function(value, link){
+                alert("The value selected was '" + value + "'.");
+            }
+        });
+    });
+
+    function Author(id, firstName, lastName, url) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.url = url;
+    }
+</script>
 </body>
 </html>
