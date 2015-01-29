@@ -23,14 +23,20 @@
 <div id="author-wrapper">
     <div id="author">1</div>
 </div>
+
+
 <script type="text/javascript">
+
     $(document).ready(function() {
         var id = $("#author").text(); //This id will be used with the REST back-end.
-        var author = new Author("1", "Robert", "Szost", "http://www.komplett.no");
-        $("#author").replaceWith("Author: <b>" + author.firstName + " " + author.lastName + "</b><br/>" +
-                "website: <a href=\"" + author.url + "\">" + author.url + "</a>");
+        $.get("services/rest/author/" + id, { } ,
+                function(author) {
+                    $("#author").replaceWith("Author: <b>" + author.firstName + " " + author.lastName + "</b><br/>" +
+                            "website: <a href=\"" + author.url + "\">" + author.url + "</a>");
 
-        $("#author-wrapper").slideDown("slow");
+                    $("#author-wrapper").slideDown();
+                },
+                "json");
 
         $(".rating").rating({
             callback: function(value, link){
